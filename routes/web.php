@@ -1,15 +1,14 @@
 <?php
-
+// middleware means before route to any page check some Authentication then go to that page.
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\UserController;
 
 Route::get('/', function () {
     return view('welcome');
 });
-
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth', 'verified'])->name('dashboard');
+// One Route for two file views with Same names  dashboard.blade.php(dashboard and admin.dashboard)
+Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
