@@ -57,9 +57,13 @@ class AdminController extends Controller
         $product->product_category = $request->get_product_category;
         $product->save();
         if($uploaded_image && $product->save()){
-            $request->product_image->move('products', $uploaded_image);
+            $request->product_image->move('products', $imagename);
         }
         return redirect()->back()->with('productmessage_added', 'Product Added Successfully!');
+    }
+    public function viewProduct(){
+        $products = Product::paginate(2);
+        return view('admin.viewproduct',compact('products'));
     }
 }
 
