@@ -7,7 +7,7 @@ use App\Models\Category;
 class AdminController extends Controller
 {
     public function adminCategory(){
-        return view('admin.admincategory');
+        return view('admin.addcategory');
     }
     public function ToAdminCategory(Request $request){
         $category = new Category();
@@ -27,4 +27,22 @@ class AdminController extends Controller
         $category_id->delete();
         return redirect()->back()->with('message_deletecategory', 'Category Deleted Successfully!');
     }
+    public function updateCategory($id){
+        $category_id = Category::findOrFail($id);   
+        return view('admin.updatecategory', compact('category_id'));
+    }
+    public function postUpdateCategory(Request $request, $id){
+        $category_id = Category::findOrFail($id);  
+        $category_id->category = $request->category;
+        $category_id->save();
+        return redirect()->back()->with('message_Updatedcategory', 'Category Updated Successfully!');
+    }
 }
+
+
+
+
+
+
+
+

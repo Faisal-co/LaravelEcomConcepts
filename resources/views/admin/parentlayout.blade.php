@@ -92,6 +92,9 @@
           @yield('admincat')
 
           @yield('viewcategory')
+
+          @yield('updatecategory')
+
         </section>
         
         <footer class="footer">
