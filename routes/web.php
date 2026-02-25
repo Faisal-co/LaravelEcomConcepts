@@ -12,7 +12,8 @@ Route::get('/', function () {
 // One Route for two file views with Same names  dashboard.blade.php(dashboard and admin.dashboard)
 Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
 Route::middleware('admin')->group(function(){
-    Route::get('/admintest', [AdminController::class, 'admintest'])->name('admintest');
+    Route::get('/admin_category', [AdminController::class, 'adminCategory'])->name('admin.category');
+    Route::post('/admin_category', [AdminController::class, 'ToAdminCategory'])->name('admin.toaddcategory');
 });
 
 Route::middleware('auth')->group(function () {
