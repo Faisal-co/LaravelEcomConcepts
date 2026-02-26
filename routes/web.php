@@ -23,6 +23,7 @@ Route::middleware('admin')->group(function(){
     Route::get('/deleteproduct/{id}', [AdminController::class, 'deleteProduct'])->name('admin.deleteproduct');
     Route::get('/updateproduct/{id}', [AdminController::class, 'updateProduct'])->name('admin.updateproduct');
     Route::post('/updateproduct/{id}', [AdminController::class, 'PostUpdateProduct'])->name('admin.postupdateproduct');
+    Route::any('/search', [AdminController::class, 'searchProduct'])->name('admin.searchproduct');
     
 });
 

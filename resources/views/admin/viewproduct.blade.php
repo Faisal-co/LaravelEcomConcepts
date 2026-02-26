@@ -11,6 +11,15 @@
     {{session('productmessage_deleted')}}
 </div>
 @endif
+<div>
+          <form id="" action="{{route('admin.searchproduct')}}" method="POST">
+            @csrf
+            <div class="form-group">
+                <input type="text" name="search" placeholder="What are you searching for...">
+                <button type="submit" class="submit">Search</button>
+            </div>
+          </form>
+        </div>
 
 <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;">
     <thead>

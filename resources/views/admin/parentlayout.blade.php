@@ -32,7 +32,8 @@
           <div class="navbar-header"><!-- Navbar Header--><a href="index.html" class="navbar-brand">
               <div class="brand-text brand-big visible text-uppercase"><strong class="text-primary">Dark</strong><strong>Admin</strong></div>
               <div class="brand-text brand-small"><strong class="text-primary">D</strong><strong>A</strong></div></a>
-            <!-- Log out               -->
+        
+            <!-- Logout               -->
             <div class="list-inline-item logout">
                 <form method="POST" action="{{ route('logout') }}">
                     @csrf
