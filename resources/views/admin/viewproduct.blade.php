@@ -6,6 +6,11 @@
     {{session('message_deletecategory')}}
 </div>
 @endif
+@if(session('productmessage_deleted'))
+<div style="margin-bottom: 10px; color:black; background-color: orangered">
+    {{session('productmessage_deleted')}}
+</div>
+@endif
 
 <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;">
     <thead>
@@ -23,7 +28,7 @@
     @foreach($products as $product) 
         <tr style="border-bottom: 1px solid #ddd;">
             <td style="padding: 12px;">{{$product->product_title}}</td>
-            <td style="padding: 12px;">{{$product->product_description}}</td>
+            <td style="padding: 12px;">{{Str::limit($product->product_description, 15,'......more')}}</td>
             <td style="padding: 12px;">{{$product->product_price}}</td>
             <td style="padding: 12px;">{{$product->product_quantity}}</td>
             <td style="padding: 12px;">
@@ -31,8 +36,8 @@
             </td>
             <td style="padding: 12px;">{{$product->product_category}}</td>
             <td style="padding: 12px;">
-                <a href="" style = "color:green;">Update</a> &nbsp;&nbsp;
-                <a href="" onclick = "return confirm('Are you sure want to delete category?')">Delete</a>
+                <a href="{{route('admin.updateproduct',$product->id)}}" style = "color:green;">Update</a> &nbsp;&nbsp;
+                <a href="{{route('admin.deleteproduct', $product->id)}}" onclick = "return confirm('Are you sure want to delete?')">Delete</a>
             </td>
         </tr>
     @endforeach
