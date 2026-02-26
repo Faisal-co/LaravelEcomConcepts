@@ -5,9 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\AdminController;
 
-Route::get('/', function () {
-    return view('homeindex');
-    })->name('homeindex');
+Route::get('/', [UserController::class, 'homeIndex'])->name('index');
 
 // One Route for two file views with Same names  dashboard.blade.php(dashboard and admin.dashboard)
 Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
