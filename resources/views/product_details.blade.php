@@ -1,6 +1,12 @@
 @extends('maindesign')
 <base href="/public">
 @section('product_details')
+@if(session('message_cart'))
+        <div style="background-color: lightgreen;"class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
+            {{session('message_cart')}}
+        </div>
+    @endif
+
 <div class="container py-5">
     <div class="row">
         
@@ -42,9 +48,9 @@
             </div>
 
             <div>
-                <button type="submit" class="btn btn-dark btn-lg w-100">
+                <a href = "{{route('add_to_cart', $product->id)}}" type="submit" class="btn btn-dark btn-lg w-100">
                     🛒 Add to Cart
-                </button>
+                </a>
 
             </div>
         </div>

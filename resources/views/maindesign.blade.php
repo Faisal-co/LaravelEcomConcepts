@@ -89,7 +89,7 @@
               @endif
             </a>
             <a href="">
-              <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+              <i class="fa fa-shopping-bag" aria-hidden="true"> {{$count}} </i>
             </a>
             <form class="form-inline ">
               <button class="btn nav_search-btn" type="submit">
@@ -126,7 +126,7 @@
                   </div>
                   <div class="col-md-5 ">
                     <div class="img-box">
-                      <img style="width:600px" src="images/image3.jpeg" alt="" />
+                      <img style="width:0px" src="images/image3.jpeg" alt="" />
                     </div>
                   </div>
                 </div>
