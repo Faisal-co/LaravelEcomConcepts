@@ -148,6 +148,8 @@
 <section class="shop_section layout_padding">
     @yield('index')
     @yield('product_details')
+    @yield('view_allproducts')
+    
 </section>
 
   <!-- end shop section -->

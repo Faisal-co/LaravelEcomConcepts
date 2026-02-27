@@ -7,6 +7,7 @@ use App\Http\Controllers\AdminController;
 
 Route::get('/', [UserController::class, 'homeIndex'])->name('index');
 Route::get('/product_details/{id}', [UserController::class, 'productDetails'])->name('productdetails');
+Route::get('/viewallproducts', [UserController::class, 'viewAllProducts'])->name('viewallproducts');
 
 // One Route for two file views with Same names  dashboard.blade.php(dashboard and admin.dashboard)
 Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');

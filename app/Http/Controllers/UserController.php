@@ -17,11 +17,16 @@ class UserController extends Controller
         }
     }
     public function homeIndex(){
-        $products = Product::all();
+        // $products = Product::all();
+        $products = Product::latest()->take(2)->get(); 
         return view('homeindex', compact('products'));
     }
     public function productDetails($id){
         $product = Product::findOrFail($id);
         return view('product_details', compact('product'));
+    }
+    public function viewAllProducts(){
+        $products = Product::all();
+        return view('viewallproducts', compact('products'));
     }
 }
