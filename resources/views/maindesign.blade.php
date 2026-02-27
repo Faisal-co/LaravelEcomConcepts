@@ -88,7 +88,7 @@
               </span>
               @endif
             </a>
-            <a href="">
+            <a href="{{route('cartproducts')}}">
               <i class="fa fa-shopping-bag" aria-hidden="true"> {{$count}} </i>
             </a>
             <form class="form-inline ">
@@ -149,6 +149,7 @@
     @yield('index')
     @yield('product_details')
     @yield('view_allproducts')
+    @yield('cartproducts')
     
 </section>
 

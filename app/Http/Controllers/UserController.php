@@ -56,5 +56,15 @@ class UserController extends Controller
         $product_cart->save();
         return redirect()->back()->with('message_cart', 'Adedd to the Cart Successfully!');
     }
+    public function cartProducts(){
+        if(Auth::check()){
+            $count = Cart::where('user_id', Auth::id())->count(); 
+            $cart_value = Cart::where('user_id', Auth::id())->get(); 
+        }
+        else{
+            $count = "";
+        }
+        return view('cartproducts', compact('count', 'cart_value'));
+    }
     
 }
