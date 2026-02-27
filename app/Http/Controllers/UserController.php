@@ -66,5 +66,10 @@ class UserController extends Controller
         }
         return view('cartproducts', compact('count', 'cart_value'));
     }
+    public function removeCart($id){
+        $cart_product = Cart::findOrFail($id);
+        $cart_product->delete();
+        return redirect()->back();
+    }
     
 }
