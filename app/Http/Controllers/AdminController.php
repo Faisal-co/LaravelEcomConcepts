@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Order;
 class AdminController extends Controller
 {
     public function adminCategory(){
@@ -103,6 +104,10 @@ class AdminController extends Controller
         ->orWhere('product_description', 'LIKE', '%' . $request->search . '%')
         ->orWhere('product_category', 'LIKE', '%' . $request->search . '%')->paginate(2);
         return view('admin.viewproduct', compact('products'));
+    }
+    public function ordersDisplay(){
+        $order_info = Order::all();
+        return view('admin.ordersdisplay', compact('order_info'));
     }
 }
 
