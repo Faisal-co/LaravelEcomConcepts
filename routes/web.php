@@ -14,6 +14,7 @@ Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth', 
 Route::get('/addtocart/{id}', [UserController::class, 'addToCart'])->middleware(['auth', 'verified'])->name('add_to_cart');
 Route::get('/cartproducts', [UserController::class, 'cartProducts'])->middleware(['auth', 'verified'])->name('cartproducts');
 Route::get('/removecart/{id}', [UserController::class, 'removeCart'])->middleware(['auth', 'verified'])->name('removecart');
+Route::post('/confirm_order', [UserController::class, 'confirmOrder'])->middleware(['auth', 'verified'])->name('confirm_order');
 
 Route::middleware('admin')->group(function(){
     Route::get('/admin_category', [AdminController::class, 'adminCategory'])->name('admin.category');

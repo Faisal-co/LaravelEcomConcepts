@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Order;
 
 class UserController extends Controller
 {
@@ -71,5 +72,25 @@ class UserController extends Controller
         $cart_product->delete();
         return redirect()->back();
     }
-    
+    public function confirmOrder(Request $request){
+        $product_id = Cart::where('user_id', Auth::id())->get();
+        $address = $request->address;
+        $phone = $request->phone;
+        foreach($product_id as $prod_id){
+        $order = new Order();
+        $order->address = $address;
+        $order->phone = $phone;
+        $order->user_id = Auth::id();
+        // Adding customer order product into orders Table.
+        $order->product_id = $prod_id->product_id; // Put carts Table product_id column value into orders Table product_id column.
+        $order->save(); 
+    }
+    $cart_info = Cart::where('user_id', Auth::id())->get();
+    foreach($cart_info as $cart_info){
+        $cart_id = Cart::findOrFail($cart_info->id);
+        $cart_id->delete(); // Delete from carts Table
+
+    }
+    return redirect()->back()->with('message_order', 'Order Placed Successfully!');
+}
 }

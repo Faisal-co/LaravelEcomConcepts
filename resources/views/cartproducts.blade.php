@@ -35,9 +35,18 @@
             <td>Total Price</td>
             <td>$ {{$price}}</td>
     </tr>
-
-    
     </tbody>
 </table>
+ @if(session('message_order'))
+        <div style = "color:white; background-color: blue; margin-bottom: 10px; padding: 10px" class="mb-4 bg-green-100 border border-green-400 text-green-700 px-4 py-3 rounded relative">
+            {{session('message_order')}}
+        </div>
+    @endif
+<form action="{{route('confirm_order')}}" method = 'POST' style = "margin-top: 30px; margin-left: 500px;">
+    @csrf
+    <input type="text" name = "address" placeholder="Enter your address" required><br><br>
+    <input type="text" name = "phone" placeholder="Enter your phone number" required><br><br>
+    <input class = "btn btn-primary" type="submit" name = "submit" value = "Confirm Order"><br><br>
+</form>
 
 @endsection
