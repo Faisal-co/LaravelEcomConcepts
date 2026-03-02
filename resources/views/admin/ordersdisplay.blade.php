@@ -24,9 +24,16 @@
             <td style="padding: 12px;">
                 <img style="width:150px;" src="{{asset('products/'. $order->product->product_image)}}" alt="">
             </td>
-            
             <td style="padding: 12px;">
-
+            <form action="{{route('orderstatus', $order->id)}}" method = 'POST'>
+                @csrf
+                <select name="status" id="">
+                    <option value="{{$order->status}}">{{$order->status}}</option>
+                    <option value="Delivered">Delivered</option>
+                    <option value="Pending">Pending</option>
+                </select>
+                <input type = "submit" name = 'submit' value = 'submit'>
+                </form>
             </td>
         </tr>
     @endforeach
