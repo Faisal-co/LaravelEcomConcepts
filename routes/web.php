@@ -33,6 +33,7 @@ Route::middleware('admin')->group(function(){
     Route::any('/search', [AdminController::class, 'searchProduct'])->name('admin.searchproduct');
     Route::get('/ordersdisplay', [AdminController::class, 'ordersDisplay'])->name('admin.ordersdisplay');
     Route::post('/orderstatus/{id}', [AdminController::class, 'orderStatus'])->name('orderstatus');
+    Route::get('/downloadpdf/{id}', [AdminController::class, 'downloadPdf'])->name('downloadpdf');
     
 });
 

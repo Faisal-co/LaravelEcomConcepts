@@ -11,6 +11,7 @@
             <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Price</th>
             <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Product Image</th>
             <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Status</th>
+            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Action</th>
         </tr>
     </thead>
     <tbody>
@@ -34,6 +35,9 @@
                 </select>
                 <input type = "submit" name = 'submit' value = 'submit'>
                 </form>
+            </td>
+            <td style="padding: 12px;">
+                <a href="{{route('downloadpdf', $order->id)}}" class = "btn btn-primary">Download Pdf</a>
             </td>
         </tr>
     @endforeach

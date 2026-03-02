@@ -11,7 +11,7 @@
                 <div class="p-6 text-gray-900 dark:text-gray-100">
                     <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;">
     <thead>
-        <tr style="background-color: #f2f2f2;">
+        <tr style="background-color: #f2f2f2;"> 
             <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Customer Name</th>
             <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Address</th>
             <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Phone</th>

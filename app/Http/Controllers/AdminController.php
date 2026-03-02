@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Order;
+use Barryvdh\DomPDF\Facade\Pdf;
 class AdminController extends Controller
 {
     public function adminCategory(){
@@ -114,7 +115,11 @@ class AdminController extends Controller
         $order->status = $request->status;
         $order->save();
         return redirect()->back();
-
+    }
+    public function downloadPdf($id){
+    $data = Order::findOrFail($id); // it Means Order Table all Column Values.
+    $pdf = Pdf::loadView('admin.invoice', compact('data'));
+    return $pdf->download('Myinvoice.pdf');
     }
 }
 
