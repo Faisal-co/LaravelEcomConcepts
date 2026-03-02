@@ -93,4 +93,8 @@ class UserController extends Controller
     }
     return redirect()->back()->with('message_order', 'Order Placed Successfully!');
 }
+public function myOrders(){
+    $order_info = Order::where('user_id', Auth::id())->get(); // we can also use Order Model function like user() & product()
+    return view('myorders' , compact('order_info'));
+}
 }

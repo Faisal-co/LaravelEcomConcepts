@@ -11,6 +11,7 @@ Route::get('/viewallproducts', [UserController::class, 'viewAllProducts'])->name
 
 // One Route for two file views with Same names  dashboard.blade.php(dashboard and admin.dashboard)
 Route::get('/dashboard', [UserController::class, 'index'])->middleware(['auth', 'verified'])->name('dashboard');
+Route::get('/myorders', [UserController::class, 'myOrders'])->middleware(['auth', 'verified'])->name('myorders');
 Route::get('/addtocart/{id}', [UserController::class, 'addToCart'])->middleware(['auth', 'verified'])->name('add_to_cart');
 Route::get('/cartproducts', [UserController::class, 'cartProducts'])->middleware(['auth', 'verified'])->name('cartproducts');
 Route::get('/removecart/{id}', [UserController::class, 'removeCart'])->middleware(['auth', 'verified'])->name('removecart');

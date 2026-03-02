@@ -1,7 +1,15 @@
-@extends('admin.parentlayout')
+<x-app-layout>
+    <x-slot name="header">
+        <h2 class="font-semibold text-xl text-gray-800 dark:text-gray-200 leading-tight">
+            {{ __('Dashboard') }}
+        </h2>
+    </x-slot>
 
-@section('ordersdisplay')
-<table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;">
+    <div class="py-12">
+        <div class="max-w-7xl mx-auto sm:px-6 lg:px-8">
+            <div class="bg-white dark:bg-gray-800 overflow-hidden shadow-sm sm:rounded-lg">
+                <div class="p-6 text-gray-900 dark:text-gray-100">
+                    <table style="width: 100%; border-collapse: collapse; font-family: Arial, sans-serif;">
     <thead>
         <tr style="background-color: #f2f2f2;">
             <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Customer Name</th>
@@ -10,7 +18,6 @@
             <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Product</th>
             <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Price</th>
             <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Product Image</th>
-            <th style="padding: 12px; text-align: left; border-bottom: 1px solid #ddd;">Status</th>
         </tr>
     </thead>
     <tbody>
@@ -25,18 +32,14 @@
                 <img style="width:150px;" src="{{asset('products/'. $order->product->product_image)}}" alt="">
             </td>
             <td style="padding: 12px;">
-            <form action="{{route('orderstatus', $order->id)}}" method = 'POST'>
-                @csrf
-                <select name="status" id="">
-                    <option value="{{$order->status}}">{{$order->status}}</option>
-                    <option value="Delivered">Delivered</option>
-                    <option value="Pending">Pending</option>
-                </select>
-                <input type = "submit" name = 'submit' value = 'submit'>
-                </form>
+                {{$order->status}}              
             </td>
         </tr>
     @endforeach
     </tbody>
 </table>
-@endsection
+                </div>
+            </div>
+        </div>
+    </div>
+</x-app-layout>
