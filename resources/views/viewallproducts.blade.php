@@ -29,6 +29,16 @@
               </div>
             </a>
           </div>
+          <div>
+                <a href = "{{route('add_to_cart', $product->id)}}" type="submit" class="btn btn-dark btn-lg w-100">
+                    Add to Cart
+                </a>
+            </div>
+            <div>
+                <a href = "{{route('add_to_cart', $product->id)}}" type="submit" class="btn btn-dark btn-lg w-100">
+                    Checkout
+                </a>
+            </div>
         </div>
         @endforeach
       </div>
