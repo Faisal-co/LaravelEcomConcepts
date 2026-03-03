@@ -7,6 +7,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Cart;
 use App\Models\Order;
+use Session;
+use Stripe;
+use Illuminate\View\View;
+use Illuminate\Http\RedirectResponse;
 
 class UserController extends Controller
 {
@@ -97,4 +101,30 @@ public function myOrders(){
     $order_info = Order::where('user_id', Auth::id())->get(); // we can also use Order Model function like user() & product()
     return view('myorders' , compact('order_info'));
 }
+  public function stripe($price): View{
+      if(Auth::check()){
+            $count = Cart::where('user_id', Auth::id())->count(); 
+            $cart_value = Cart::where('user_id', Auth::id())->get(); 
+        }
+        else{
+            $count = "";
+        }
+        $price = $price;
+    return view('stripe', compact('count', 'price'));
+    }
+    public function stripePost(Request $request): RedirectResponse
+    {
+        Stripe\Stripe::setApiKey(env('STRIPE_SECRET'));
+      
+        Stripe\Charge::create ([
+                "amount" => 10 * 100,
+                "currency" => "usd",
+                "source" => $request->stripeToken,
+                "description" => "Test payment from itsolutionstuff.com." 
+        ]);
+                
+        return back()
+                ->with('success', 'Payment successful!');
+    }
+
 }

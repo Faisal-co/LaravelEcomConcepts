@@ -47,6 +47,9 @@
     <input type="text" name = "address" placeholder="Enter your address" required><br><br>
     <input type="text" name = "phone" placeholder="Enter your phone number" required><br><br>
     <input class = "btn btn-primary" type="submit" name = "submit" value = "Confirm Order"><br><br>
+    <a href = "{{route('stripe', $price)}}" type="submit" class="btn btn-primary">
+        Pay Now $ {{$price}}
+    </a>
 </form>
 
 @endsection

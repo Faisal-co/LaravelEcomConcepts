@@ -53,6 +53,11 @@
                 </a>
 
             </div>
+             <div>
+                <a href = "{{route('add_to_cart', $product->id)}}" type="submit" class="btn btn-dark btn-lg w-100">
+                    Pay now
+                </a>
+            </div>
         </div>
     </div>
 </div>

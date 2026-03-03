@@ -16,6 +16,11 @@ Route::get('/addtocart/{id}', [UserController::class, 'addToCart'])->middleware(
 Route::get('/cartproducts', [UserController::class, 'cartProducts'])->middleware(['auth', 'verified'])->name('cartproducts');
 Route::get('/removecart/{id}', [UserController::class, 'removeCart'])->middleware(['auth', 'verified'])->name('removecart');
 Route::post('/confirm_order', [UserController::class, 'confirmOrder'])->middleware(['auth', 'verified'])->name('confirm_order');
+  
+Route::controller(UserController::class)->middleware(['auth', 'verified'])->group(function(){
+    Route::get('stripe/{price}', 'stripe')->name('stripe');
+    Route::post('stripe', 'stripePost')->name('stripe.post');
+});
 
 Route::middleware('admin')->group(function(){
     Route::get('/admin_category', [AdminController::class, 'adminCategory'])->name('admin.category');

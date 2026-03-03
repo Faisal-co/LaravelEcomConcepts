@@ -27,6 +27,9 @@
   <link href="frontend/css/style.css" rel="stylesheet" />
   <!-- responsive style -->
   <link href="frontend/css/responsive.css" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    
 </head>
 
 <body>
@@ -150,6 +153,7 @@
     @yield('product_details')
     @yield('view_allproducts')
     @yield('cartproducts')
+    @yield('stripe_view')
     
 </section>
 
@@ -303,6 +307,37 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/owl.carousel.min.js">
   </script>
   <script src="frontend/js/custom.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+<script type="text/javascript">
+  
+    var stripe = Stripe('{{ env('STRIPE_KEY') }}')
+    var elements = stripe.elements();
+    var cardElement = elements.create('card');
+    cardElement.mount('#card-element');
+  
+    /*------------------------------------------
+    --------------------------------------------
+    Create Token Code
+    --------------------------------------------
+    --------------------------------------------*/
+    function createToken() {
+        document.getElementById("pay-btn").disabled = true;
+        stripe.createToken(cardElement).then(function(result) {
+   
+            if(typeof result.error != 'undefined') {
+                document.getElementById("pay-btn").disabled = false;
+                alert(result.error.message);
+            }
+  
+            /* creating token success */
+            if(typeof result.token != 'undefined') {
+                document.getElementById("stripe-token-id").value = result.token.id;
+                document.getElementById('checkout-form').submit();
+            }
+        });
+    }
+</script>
+ 
 
 </body>
 
